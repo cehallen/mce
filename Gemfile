@@ -14,6 +14,7 @@ group :doc do
 end
 
 gem 'simple_form'
+gem 'tactful_tokenizer'
 
 group :test, :development do
   gem 'rspec-rails'
