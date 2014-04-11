@@ -20,6 +20,8 @@ class MoviesController < ApplicationController
 
   def create
     # is this file getting deleted after? where is it, rails root?  nowhere?
+    # where should I put all this fat controller ruby, in a helper in lib?
+
     title = params[:movie][:title]
     script = params[:movie][:script].read
     @movie = Movie.new(title: title, script: script)
@@ -29,13 +31,16 @@ class MoviesController < ApplicationController
     sentences = m.tokenize_text(script)
 
     # create sentence objects
+    number = nil
+    time_marker = nil
+    content = []
     sentences.each do |sentence|
-      number = nil #must convert str->int
-      time_marker = nil
-      movie = @movie
-      content = nil
-      if sentence
-
+      if sentence =~ /\A\d+\z/
+        number = sentence.to_i
+      elsif sentence =~ /-->/
+        time_marker = sentence[0..7]
+      else
+        content << sentence
       end
     end
     binding.pry
