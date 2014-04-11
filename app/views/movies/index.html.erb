@@ -1,7 +1,7 @@
 <h3>Movies</h3>
 
 <% @movies.each do |movie| %>
-  <p><%= movie.title %></p>
+  <p><%= link_to movie.title, movie_path(movie) %></p>
 <% end %>
 
 <p><%= link_to "Upload a new subtitle file", new_movie_path %></p>

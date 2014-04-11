@@ -19,12 +19,28 @@ class MoviesController < ApplicationController
   # end
 
   def create
-    # binding.pry
+    # is this file getting deleted after? where is it, rails root?  nowhere?
     title = params[:movie][:title]
     script = params[:movie][:script].read
     @movie = Movie.new(title: title, script: script)
-    # binding.pry
-    if @movie.save
+
+    # gem to break into unpolished array of sentences
+    m = TactfulTokenizer::Model.new
+    sentences = m.tokenize_text(script)
+
+    # create sentence objects
+    sentences.each do |sentence|
+      number = nil #must convert str->int
+      time_marker = nil
+      movie = @movie
+      content = nil
+      if sentence
+
+      end
+    end
+    binding.pry
+
+    if @movie.save # and words.save and sentences.save
       redirect_to movies_path
     else
       render :new
