@@ -21,8 +21,9 @@ feature 'adding a movie', %Q{
 
   scenario 'with valid srt file' do
     visit movies_path
-    click_on 'Upload'
-    # capybara uploading
+    click_on 'Upload a new subtitle file'
+    attach_file 'Choose File', '/Users/mooncake/Dropbox/launchacademy/breakabletoy/goodWillHunting.srt'
+    # attach_file('Image', '/path/to/image.jpg')
     expect(page).to have_content('Your movie is ready!')
     expect(page).to have_content('High Frequency')
     expect(page).to have_content('Medium Frequency')
