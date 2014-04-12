@@ -1,0 +1,11 @@
+<p>@ <%= @sentence.time_marker %></p>
+
+<% if !@preceding_sentence.empty? %>
+  <p><%= @preceding_sentence.take.content %></p>
+<% end %>
+
+<h4><%= @sentence.content %></h4>
+
+<% if !@following_sentence.empty? %>
+  <p><%= @following_sentence.take.content %></p>
+<% end %>
