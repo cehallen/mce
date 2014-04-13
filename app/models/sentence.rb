@@ -3,5 +3,6 @@ class Sentence < ActiveRecord::Base
   validates :time_marker, presence: true
   validates :movie, presence: true
   belongs_to :movie
-  has_many :words, through: :s_join_ws
+  has_many :words, through: :sjoinws
+  has_many :sjoinws
 end

@@ -1,4 +1,4 @@
-class SJoinW < ActiveRecord::Base
+class Sjoinw < ActiveRecord::Base
   belongs_to :word
   belongs_to :sentence
 end

@@ -1,6 +1,7 @@
 <h3><%= @movie.title %> </h3>
 
 <!-- in the end, don't show sentences like this.  just show words in hi/med/lo groups -->
+
 <p>
   <% @movie.sentences.each do |sentence| %>
     <p><%= link_to sentence.content, sentence_path(sentence) %></p>
