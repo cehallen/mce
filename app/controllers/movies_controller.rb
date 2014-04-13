@@ -78,6 +78,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    @words = Word.where()
     # @sentences = @movie.sentences
   end
 end
