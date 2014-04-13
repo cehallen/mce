@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
         title: params[:movie][:title],
         notice: 'Please upload a subtitle file'
     end
-    if params[:movie][:title] = ''
+    if params[:movie][:title] == ''
       return redirect_to new_movie_path,
       # script: params[:movie][:script], #this didn't work
       notice: "Please try again (remember the title)"
@@ -59,14 +59,16 @@ class MoviesController < ApplicationController
     sentences.each do |sentence| 
       sentence.content.split.each do |word| 
         word = word.downcase.gsub(/\A\W+|\W+\z/, '')
+        next if word.length < 2 
+        # skip_these_words = %w(the of to and in is it you that he was for on are) 
+        # next if skip_these_words.include?(word)
         word_entry = Word.where(content: word).first_or_initialize
         word_entry.frequency += 1
         word_entry.save 
-        word_entry.sjoinws.create(sentence: sentence) # Creates join entry
-        # binding.pry
+        word_entry.sjoinws.create(sentence: sentence) # Create join entry
       end
     end
-
+    binding.pry
     if @movie.save
       redirect_to movies_path
     else
