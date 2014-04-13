@@ -67,8 +67,8 @@ class MoviesController < ApplicationController
         word_entry.save 
         word_entry.sjoinws.create(sentence: sentence) # Create join entry
       end
+
     end
-    binding.pry
     if @movie.save
       redirect_to movies_path
     else
@@ -78,6 +78,6 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @sentences = @movie.sentences
+    # @sentences = @movie.sentences
   end
 end
