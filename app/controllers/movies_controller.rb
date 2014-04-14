@@ -62,6 +62,7 @@ class MoviesController < ApplicationController
         next if word.length < 2 
         # skip_these_words = %w(the of to and in is it you that he was for on are) 
         # next if skip_these_words.include?(word)
+        # # [don't want to omit these bc there aren't many, and could be useful for beginner learners]
         word_entry = Word.where(content: word).first_or_initialize
         word_entry.frequency += 1
         word_entry.save 
@@ -77,7 +78,13 @@ class MoviesController < ApplicationController
   end
 
   def show
+    # WORK HERE. CHANGE TO WORDS BY FREQUENCY.
     @movie = Movie.find(params[:id])
-    @sentences = @movie.sentences
+    @words_lo = Word.where("frequency = 1")
+    @words_med = Word.where("frequency > 1 AND frequency <= 5")
+    @words_hi = Word.where("frequency > 5")
+    #old way
+    # @movie = Movie.find(params[:id])
+    # @sentences = @movie.sentences
   end
 end
