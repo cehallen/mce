@@ -1,8 +1,15 @@
 <h3><%= @word.content %></h3>
 <!-- need pagination for large numbers -->
- 
-<h5>.. and the sentences <em><%= @word.content %></em> appears in:</h5>
+<!-- need to include surrounding 'sentences' -->
+<h5>.. and the context <em><%= @word.content %></em> appears in:</h5>
 
 <% @sentences.each do |sentence| %>
-  <li><%= sentence.content %></li>
+  <% number = sentence.number %>
+  <% previous_sentence = Sentence.where("number = #{number - 1}").take.content %>
+  <% following_sentence = Sentence.where("number = #{number + 1}").take.content %>
+
+  <%= "@#{sentence.time_marker}" %><br>
+  <%= previous_sentence %><br>
+  <strong><%= sentence.content %></strong><br>
+  <%= following_sentence %><br><br>
 <% end %>
