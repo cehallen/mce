@@ -1,9 +1,20 @@
 class WordsController < ApplicationController
+  
+  # This action can handle both 
+  # /words/:id
+  # and
+  # /movies/:movie_id/words/:id
   def show
-    # very similar to sentence show.  could combine them, maybe
     @word = Word.find(params[:id])
-    @sentences = @word.sentences # be careful, there could be many sentences for some words
-    
+
+    if params[:movie_id]
+      @movie = Movie.find(params[:movie_id])
+      @sentences = @movie.sentences
+        .joins(:sjoinws).where(sjoinws: { word: @word })
+    else
+      @sentences = @word.sentences
+    end  
+
   end
 end
 

@@ -5,11 +5,15 @@
 
 <% @sentences.each do |sentence| %>
   <% number = sentence.number %>
-  <% previous_sentence = Sentence.where("number = #{number - 1}").take.content %>
-  <% following_sentence = Sentence.where("number = #{number + 1}").take.content %>
+
+  <!-- AND the movie is the same movie... must fix -->
+  <% previous_sentence = Sentence.where("number = #{number - 1} AND movie_id = #{sentence.movie_id}").take.content %>
+  <% following_sentence = Sentence.where("number = #{number + 1} AND movie_id = #{sentence.movie_id}").take.content %>
 
   <%= "@#{sentence.time_marker}" %><br>
   <%= previous_sentence %><br>
   <strong><%= sentence.content %></strong><br>
   <%= following_sentence %><br><br>
 <% end %>
+
+ AND movie_id = sentence.movie_id

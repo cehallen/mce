@@ -80,6 +80,7 @@ class MoviesController < ApplicationController
   def show
     # WORK HERE. CHANGE TO WORDS BY FREQUENCY.
     @movie = Movie.find(params[:id])
+    # do an AND in the sql to narrow down to @movie's id.
     @words_lo = Word.where("frequency = 1")
     @words_med = Word.where("frequency > 1 AND frequency <= 5")
     @words_hi = Word.where("frequency > 5")

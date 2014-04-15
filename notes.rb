@@ -1,12 +1,5 @@
 %Q{
-  -From old movie show page with all the sentences:
-  <p>
-    <% @movie.sentences.each do |sentence| %>
-      <p><%= link_to sentence.content, sentence_path(sentence) %></p>
-    <% end %>
-  </p>
-
-
+  -Check out aggregate queries in SQL (for purpose of listing words by frequency in that movie, not using frequency)and get rid of frequency column
 }
 
 # new movies#show in controller
