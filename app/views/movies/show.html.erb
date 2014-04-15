@@ -1,3 +1,19 @@
 <h3><%= @movie.title %> </h3>
 
+<% total_words = @movie.word_counts.count %>
+<% thirds_split = total_words/3 %>
+
 <h5>High Frequency Words (and # of occurrences)</h5>
+<% @movie.word_counts[0..thirds_split].each do |word_freq_pair| %> 
+  <li><%= word_freq_pair[0] %> - <%= word_freq_pair[1] %></li>
+<% end %>
+
+<h5>Medium Frequency Words</h5>
+<% @movie.word_counts[thirds_split..thirds_split*2].each do |word_freq_pair| %> 
+  <li><%= word_freq_pair[0] %> - <%= word_freq_pair[1] %></li>
+<% end %>
+
+<h5>Low Frequency Words</h5>
+<% @movie.word_counts[thirds_split*2..-1].each do |word_freq_pair| %> 
+  <li><%= word_freq_pair[0] %> - <%= word_freq_pair[1] %></li>
+<% end %>

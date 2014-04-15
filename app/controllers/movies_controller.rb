@@ -84,7 +84,7 @@ class MoviesController < ApplicationController
     # in the view I guess
 
     #show words from that movie.  
-    @words = @movie.words
+    # @words = @movie.words
 
     #second oldest way, with the show page works now.
     # @words_lo = Word.where("frequency = 1")

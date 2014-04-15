@@ -7,8 +7,9 @@ class Movie < ActiveRecord::Base
     words.select("words.content, count(*)")
       .group("words.content")
       .order("count(*) desc").map do |word|
-        
       [word.content, word.count]
     end
   end
 end
+
+
