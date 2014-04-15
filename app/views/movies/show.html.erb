@@ -1,16 +1,3 @@
 <h3><%= @movie.title %> </h3>
 
 <h5>High Frequency Words (and # of occurrences)</h5>
-<% @words_hi.each do |word| %>
-  <li><%= link_to word.content, word_path(word) %> - <%= word.frequency %></li>
-<% end %>
-
-<h5>Medium Frequency Words</h5>
-<% @words_med.each do |word| %>
-  <li><%= link_to word.content, word_path(word) %> - <%= word.frequency %></li>
-<% end %>
-
-<h5>Low Frequency Words</h5>
-<% @words_lo.each do |word| %>
-  <li><%= link_to word.content, word_path(word) %> - <%= word.frequency %></li>
-<% end %>

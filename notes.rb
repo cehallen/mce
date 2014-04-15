@@ -13,3 +13,18 @@ def show
   @words_hi = Word.where("frequency > 5")
 
 end
+
+# old way of hi/med/lo freq in movies show
+<% @words_hi.each do |word| %>
+  <li><%= link_to word.content, word_path(word) %> - <%= word.frequency %></li>
+<% end %>
+
+<h5>Medium Frequency Words</h5>
+<% @words_med.each do |word| %>
+  <li><%= link_to word.content, word_path(word) %> - <%= word.frequency %></li>
+<% end %>
+
+<h5>Low Frequency Words</h5>
+<% @words_lo.each do |word| %>
+  <li><%= link_to word.content, word_path(word) %> - <%= word.frequency %></li>
+<% end %>

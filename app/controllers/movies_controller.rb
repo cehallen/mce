@@ -80,11 +80,13 @@ class MoviesController < ApplicationController
   def show
     # WORK HERE. CHANGE TO WORDS BY FREQUENCY.
     @movie = Movie.find(params[:id])
-    # do an AND in the sql to narrow down to @movie's id.
-    # even if you did that, you'd have frequency ratings across all movies not just @movie...
     # as adam said, you can draw that frequency number with an aggregate query.
-    
-    #second oldest way
+    # in the view I guess
+
+    #show words from that movie.  
+    @words = @movie.words
+
+    #second oldest way, with the show page works now.
     # @words_lo = Word.where("frequency = 1")
     # @words_med = Word.where("frequency > 1 AND frequency <= 5")
     # @words_hi = Word.where("frequency > 5")
