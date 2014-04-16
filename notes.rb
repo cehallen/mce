@@ -7,5 +7,7 @@
 
   -Error with word show page, comes on clicking first word in GWH.  
 
+  -Would love to be able to google the word by clicking on it in the show page
+
 }
 

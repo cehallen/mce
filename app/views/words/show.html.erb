@@ -1,4 +1,4 @@
-<h3><%= @word.content %></h3>
+<h3><%= link_to @word.content, "http://www.google.com/search?q=#{@word.content}" %></h3>
 
 <h5>.. and the context <em><%= @word.content %></em> appears in:</h5>
 
