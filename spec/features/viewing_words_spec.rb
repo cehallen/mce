@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'viewing words for an already submitted movie', %Q{
   As an authenticated or unauthenticated user
   I want to be able to view the words of a movie
-  So I can see view them in context
+  So I can see a summary and frequency of words
 } do
 
 # Acceptance Criteria:
