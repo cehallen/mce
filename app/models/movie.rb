@@ -7,9 +7,15 @@ class Movie < ActiveRecord::Base
     words.select("words.content, count(*)")
       .group("words.content")
       .order("count(*) desc").map do |word|
-      [word.content, word.count]
-    end
+        [word.content, word.count, Word.where("content = ?", word.content)]
+      end
+      # binding.pry
   end
 end
 
-
+# untarnished
+# words.select("words.content, count(*)")
+#   .group("words.content")
+#   .order("count(*) desc").map do |word|
+#   [word.content, word.count]
+# end

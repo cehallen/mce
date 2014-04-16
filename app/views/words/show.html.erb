@@ -1,19 +1,22 @@
 <h3><%= @word.content %></h3>
-<!-- need pagination for large numbers -->
-<!-- need to include surrounding 'sentences' -->
+
 <h5>.. and the context <em><%= @word.content %></em> appears in:</h5>
+
+<!-- ideally, remove Arel from views! won't be easy bc of the each block-->
 
 <% @sentences.each do |sentence| %>
   <% number = sentence.number %>
 
-  <!-- AND the movie is the same movie... must fix -->
-  <% previous_sentence = Sentence.where("number = #{number - 1} AND movie_id = #{sentence.movie_id}").take.content %>
-  <% following_sentence = Sentence.where("number = #{number + 1} AND movie_id = #{sentence.movie_id}").take.content %>
+  <% previous_sentence = 
+    Sentence.where("number = #{number - 1} 
+    AND movie_id = #{sentence.movie_id}").take.content %>
+
+  <% following_sentence = 
+    Sentence.where("number = #{number + 1} 
+    AND movie_id = #{sentence.movie_id}").take.content %>
 
   <%= "@#{sentence.time_marker}" %><br>
   <%= previous_sentence %><br>
   <strong><%= sentence.content %></strong><br>
   <%= following_sentence %><br><br>
 <% end %>
-
- AND movie_id = sentence.movie_id

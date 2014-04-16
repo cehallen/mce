@@ -6,7 +6,7 @@ class WordsController < ApplicationController
   # /movies/:movie_id/words/:id
   def show
     @word = Word.find(params[:id])
-
+    
     if params[:movie_id]
       @movie = Movie.find(params[:movie_id])
       @sentences = @movie.sentences
