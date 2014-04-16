@@ -21,6 +21,8 @@
     • <%= link_to @word.content, 
     "http://www.google.com/search?q=#{@word.content}" %>
 
+  -Deleting a duplicate movie deletes all words for the original.
+
 }
 
 -from old app.html.erb

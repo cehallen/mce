@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
   def create
     if params[:movie][:script].nil? && params[:movie][:title] == ''
       return redirect_to new_movie_path, 
-        notice: 'Please input both items!'
+        notice: 'Please input both items'
     end
     if params[:movie][:script].nil?
       return redirect_to new_movie_path,
@@ -64,7 +64,8 @@ class MoviesController < ApplicationController
 
     end
     if @movie.save
-      redirect_to movies_path
+      redirect_to movie_path(@movie),
+        notice: 'Your movie is ready!'
     else
       render :new
     end

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-feature 'adding a movie', %Q{
-  As an authenticated user
-  I want to be able to upload srt files
-  So I can study movies of my choosing
+feature 'viewing words for an already submitted movie', %Q{
+  As an authenticated or unauthenticated user
+  I want to be able to view the words of a movie
+  So I can see view them in context
 } do
 
 # Acceptance Criteria:
@@ -23,33 +23,20 @@ feature 'adding a movie', %Q{
     sign_in_as(FactoryGirl.create(:user))
   end
 
-  scenario 'with valid srt file' do
-    prev_count = Movie.count
+  scenario 'as an signed in user' do
     visit movies_path
+    #extract to helper
     click_on 'Add a Subtitle File'
-
     fill_in 'Title', with: 'Good Will Hunting'
     attach_file('movie[script]', 
       File.expand_path('spec/support/goodWillHuntingSHORT.srt'))
     click_on 'Add Movie'
 
-    expect(page).to have_content('Your movie is ready!')
-    expect(page).to have_content('High Frequency Words')
-    expect(page).to have_content('Medium Frequency Words')
-    expect(page).to have_content('Low Frequency Words')
-    expect(Movie.count).to eq(prev_count + 1)
-    #expect containers for hi/med/lo to not be empty
+    expect(page).to have_content('you - 21')
+    expect(page).to have_content('the - 9')
   end
 
-  scenario 'with invalid attributes' do
-    prev_count = Movie.count
-    visit movies_path
-    click_on 'Add a Subtitle File'
-
-    click_on 'Add Movie'
-
-    expect(page).to have_content('Please input both items')
-    expect(page).to_not have_content('Your movie is ready!')
-    expect(page).to have_content()
+  scenario '' do
+    
   end
 end
