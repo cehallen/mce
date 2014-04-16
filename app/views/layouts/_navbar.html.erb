@@ -9,6 +9,7 @@
 
     <section class="top-bar-section">
       <ul class="right">
+        <li><%= link_to "Add a Subtitle File", new_movie_path %></li>
         <% if user_signed_in? %>
           <li class="active"><%= current_user.email %></li>
           <li class="active"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
@@ -18,9 +19,7 @@
         <%end%>
       </ul>
 
-      <ul class="left">
-        <li><%= link_to "Add a Subtitle File", new_movie_path %></li>
-      </ul>
+      
     </section>
 
   </nav>
