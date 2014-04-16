@@ -8,13 +8,6 @@ class MoviesController < ApplicationController
   end
 
   def create
-    # is srt getting deleted after? where is it, rails root?  nowhere?
-      # @tempfile=#<Tempfile:/var/folders/b9/6w0shc9d1sn0hpyl84z71bvm0000gn/T/RackMultipart20140413-81782-zq8kh8>
-    # where should I put all this fat controller ruby- helper/module? class?
-    # how can I confirm .srt valid format?
-      # @content_type="application/octet-stream"
-    # how can I confirm valid Word/Sentence creation on @movie.save?
-      # otherwise if the srt file is corrupt, and errors occur, the user will get a red screen.  i want to show them a redirect... some kind of x.new -> if x.save flow. 
     if params[:movie][:script].nil? && params[:movie][:title] == ''
       return redirect_to new_movie_path, 
         notice: 'Please input both items!'

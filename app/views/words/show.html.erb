@@ -1,19 +1,32 @@
-<h3><%= link_to @word.content, "http://www.google.com/search?q=#{@word.content}" %></h3>
+<h3>
+  <%= link_to @word.content, 
+    "http://www.google.com/search?q=#{@word.content}" %>
+</h3>
 
 <h5>.. and the context <em><%= @word.content %></em> appears in:</h5>
 
 <!-- ideally, remove Arel from views! won't be easy bc of the each block-->
 
+
+
 <% @sentences.each do |sentence| %>
   <% number = sentence.number %>
 
-  <% previous_sentence = 
-    Sentence.where("number = #{number - 1} 
-    AND movie_id = #{sentence.movie_id}").take.content %>
+  <% if number == 1 %>
+    <% previous_sentence = nil %>
+  <% else %>
+    <% previous_sentence = 
+      Sentence.where("number = #{number - 1} 
+      AND movie_id = #{sentence.movie_id}").take.content %>
+  <% end %>
 
-  <% following_sentence = 
-    Sentence.where("number = #{number + 1} 
-    AND movie_id = #{sentence.movie_id}").take.content %>
+  <% if number == @max_number_sentence %>
+    <% following_sentence = nil %>
+  <% else %>
+    <% following_sentence = 
+      Sentence.where("number = #{number + 1} 
+      AND movie_id = #{sentence.movie_id}").take.content %>
+  <% end %>
 
   <%= "@#{sentence.time_marker}" %><br>
   <%= previous_sentence %><br>
