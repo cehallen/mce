@@ -23,3 +23,13 @@
 
 }
 
+-from old app.html.erb
+
+<% if flash[:notice].present? %>
+  <%= flash[:notice] %>
+<% end %>
+
+<% if flash[:alert].present? %>
+  <%= flash[:alert] %>
+<% end %>
+
