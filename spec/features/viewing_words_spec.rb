@@ -8,35 +8,29 @@ feature 'viewing words for an already submitted movie', %Q{
 
 # Acceptance Criteria:
 
-# * On the movies index page I can find a link to upload my own movie
-# * On the movie creation page I see an upload srt file option
-# * If the file I upload is not an srt or txt file I get an error message
-#   and am prompted to try again
-# * While uploading I'm given an uploading confirmation and/or status ()
-# * If unsuccessful I'm given errors and can try again
-# * If successfully uploaded I'm given a notice and taken to that
-#   movie's page
-# * The movie page contains a title, number of unique, non-trivial
-#   words added, and three categories of words by frequency: hi/med/lo
+# * On the movies index page I can click on a movie's title 
+#   and be shown a list of words from the movie and frequency
 
-  before(:each) do
+
+  scenario 'as authenticated user' do
     sign_in_as(FactoryGirl.create(:user))
-  end
-
-  scenario 'as an signed in user' do
     visit movies_path
-    #extract to helper
-    click_on 'Add a Subtitle File'
-    fill_in 'Title', with: 'Good Will Hunting'
-    attach_file('movie[script]', 
-      File.expand_path('spec/support/goodWillHuntingSHORT.srt'))
-    click_on 'Add Movie'
+    create_movie
+    click_on 'Good Will Hunting'
 
     expect(page).to have_content('you - 21')
     expect(page).to have_content('the - 9')
   end
 
-  scenario '' do
-    
+  scenario 'as unauthenticated user' do
+    sign_in_as(FactoryGirl.create(:user))
+    visit movies_path
+    create_movie
+    click_on 'Sign Out'
+    visit movies_path
+    click_on 'Good Will Hunting'
+
+    expect(page).to have_content('you - 21')
+    expect(page).to have_content('the - 9')
   end
 end

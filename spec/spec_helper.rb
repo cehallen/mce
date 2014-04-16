@@ -41,4 +41,5 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   config.include AuthenticationHelpers, type: :feature
+  config.include CreateMovieHelpers, type: :feature
 end
