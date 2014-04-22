@@ -1,0 +1,18 @@
+.word_list {
+  float: left;
+}
+
+.word_context {
+  /*position: sticky;*/
+  float: left;
+  /*overflow: scroll;*/
+}
+
+.context_block p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.context_block {
+  padding: 10px;
+}

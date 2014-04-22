@@ -1,38 +1,24 @@
-<h3><%= @movie.title %> </h3>
+<div class="row">
+  <div class="small-4 large-4 columns">
+    <div class="word_list">
+      <h3><%= @movie.title %> </h3>
 
-<% total_words = @movie.word_counts.count %>
-<% thirds_split = total_words/3 %>
+      <h5>Words (and # of occurrences)</h5>
 
-<h5>High Frequency Words (and # of occurrences)</h5>
-<% @movie.word_counts[0..thirds_split].each do |word_info| %> 
-  <% word = word_info[0] %>
-  <% frequency = word_info[1] %>
-  <% word_object = word_info[2] %>
+      <% @movie.word_counts.each do |word_info| %> 
+        <% word = word_info[0] %>
+        <% frequency = word_info[1] %>
+        <% word_object = word_info[2] %>
 
-  <li><%= link_to word, movie_word_path(@movie, word_object.first), class: 'word_link' %> - 
-    <%= frequency %></li>
-<% end %>
+        <li><%= link_to word, movie_word_path(@movie, word_object.first), class: 'word_link' %> - 
+          <%= frequency %></li>
+      <% end %>
+    </div>
+  </div>
 
-<h5>Medium Frequency Words</h5>
-<% @movie.word_counts[thirds_split..thirds_split*2].each do |word_info| %> 
-  <% word = word_info[0] %>
-  <% frequency = word_info[1] %>
-  <% word_object = word_info[2] %>
+  <div class="small-8 large-8 columns">
+    <div class="word_context">
 
-  <li><%= link_to word, movie_word_path(@movie, word_object.first) %> - 
-    <%= frequency %></li>
-<% end %>
-
-<h5>Low Frequency Words</h5>
-<% @movie.word_counts[thirds_split*2..-1].each do |word_info| %> 
-  <% word = word_info[0] %>
-  <% frequency = word_info[1] %>
-  <% word_object = word_info[2] %>
-
-  <li><%= link_to word, movie_word_path(@movie, word_object.first) %> - 
-    <%= frequency %></li>
-<% end %>
-
-<div id="word_context">
-  
+    </div>
+  </div>
 </div>

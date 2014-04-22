@@ -28,14 +28,72 @@
   -Deleting a duplicate movie deletes all words for the original.
 
 }
+# from adam's
+$(document).ready(function(){
+  $('.word_link').on('click', function(e){
+    e.preventDefault();
+    // debugger;
+    var url = this['href'] + ".json";
+    $.get(url, function(data){
+      for(var i = 0; i < data.length; i++){
+        $('.word_context').append(data[i].content);
+      }
+    })
+  })
+});
 
--from old app.html.erb
 
-<% if flash[:notice].present? %>
-  <%= flash[:notice] %>
-<% end %>
 
-<% if flash[:alert].present? %>
-  <%= flash[:alert] %>
-<% end %>
+ // missing title word and link to google search
+#minmally screwed up
+$(document).ready(function(){
+  $('.word_link').on('click', function(e){
+    e.preventDefault();
+    var word_context = $('<div>').addClass('word_context')
+    this.append(word_context)
+    // $('.word_context').empty();
+
+    var word_li = this
+    debugger;
+    var url = this['href'] + ".json";
+    $.get(url, function(data){
+      for(var i = 0; i < data.length; i++){
+        var $time = $('<p>').text("@" + data[i].time_marker);
+        var $previous = $('<p>').text(data[i].previous);
+        var $content = $('<p>').text(data[i].content).css('font-weight', 'bold');
+        var $following = $('<p>').text(data[i].following);
+        var $context_block = $('<div>')
+          .addClass('context_block')
+          .append($time)
+          .append($previous)
+          .append($content)
+          .append($following);
+        // console.log(word_li);
+        $(word_li).append($context_block);
+
+      }
+    })
+  })
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
