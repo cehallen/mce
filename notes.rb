@@ -1,4 +1,8 @@
 %Q{
+  -Make sentences previous and following method
+  -keep going on building the sentence content blocks in the js file.  
+  -alter JSON builder
+  -foundation to get a column on the right for the sentences
   -Check out aggregate queries in SQL (for purpose of listing words by frequency in that movie, not using frequency)and get rid of frequency column
     • @sentences = @movie.sentences
         .joins(:sjoinws).where(sjoinws: { word: @word })
