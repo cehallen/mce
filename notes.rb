@@ -1,8 +1,5 @@
 %Q{
-  -Make sentences previous and following method
-  -keep going on building the sentence content blocks in the js file.  
   -alter JSON builder
-  -foundation to get a column on the right for the sentences
   -can't get word into json builder
 
   -Some words don't work, like 'me' in GWH short

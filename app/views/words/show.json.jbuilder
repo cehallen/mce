@@ -4,3 +4,4 @@
     json.content sentence.content
     json.following sentence.following.first.content
   end
+
