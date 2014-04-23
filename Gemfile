@@ -16,6 +16,8 @@ end
 gem 'simple_form'
 gem 'devise'
 gem 'foundation-rails'
+gem 'carrierwave'
+gem 'fog'
 
 group :test, :development do
   gem 'rspec-rails'
