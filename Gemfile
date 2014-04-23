@@ -25,6 +25,7 @@ group :test, :development do
   gem 'shoulda'
   gem 'launchy'
   gem 'capybara'
+  gem 'dotenv-rails'
 end
 
 group :production do
