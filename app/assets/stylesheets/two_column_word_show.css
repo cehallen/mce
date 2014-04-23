@@ -39,9 +39,9 @@
 }
 
 .ascii_right {
-  padding-top: 39px;
+  padding-top: 30px;
   /*padding-right: 500px;*/
-  width: 630px;
+  width: 87%;
   height: auto;
   overflow: hidden;
 }
