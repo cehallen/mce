@@ -28,15 +28,16 @@ class MoviesController < ApplicationController
     @movie = Movie.new(title: title)
 
     # Sentence object creation
-    script = script.strip.split(/^\s*$/) 
-    script.each do |entry|
-      line = entry.strip.split("\n")
-      number = line[0]
-      time_marker =  line[1][0..7]
-      content = line[2..-1].join("\n")
-      Sentence.create(movie: @movie, number: number, 
-        time_marker: time_marker, content: content)
+    c = SubtitleParse.new
+    context_blocks = c.array_sentences(script)
+    
+    context_blocks.each do |block|
+      Sentence.create(movie: @movie, 
+        number: block['number'], 
+        time_marker: block['time_marker'], 
+        content: block['content'])
     end
+
 
     # Word object creation
     # [need to have an excluded words list]

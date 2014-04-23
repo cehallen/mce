@@ -26,7 +26,7 @@ feature 'adding a movie', %Q{
   scenario 'with valid srt file' do
     prev_count = Movie.count
     visit movies_path
-    click_on 'Add a Subtitle File'
+    click_on 'Add Subtitles'
 
     fill_in 'Title', with: 'Good Will Hunting'
     attach_file('movie[script]', 
@@ -34,22 +34,19 @@ feature 'adding a movie', %Q{
     click_on 'Add Movie'
 
     expect(page).to have_content('Your movie is ready!')
-    expect(page).to have_content('High Frequency Words')
-    expect(page).to have_content('Medium Frequency Words')
-    expect(page).to have_content('Low Frequency Words')
     expect(Movie.count).to eq(prev_count + 1)
     #expect containers for hi/med/lo to not be empty
+    binding.pry
   end
 
   scenario 'with invalid attributes' do
     prev_count = Movie.count
     visit movies_path
-    click_on 'Add a Subtitle File'
+    click_on 'Add Subtitles'
 
     click_on 'Add Movie'
 
     expect(page).to have_content('Please input both items')
     expect(page).to_not have_content('Your movie is ready!')
-    expect(page).to have_content()
   end
 end
