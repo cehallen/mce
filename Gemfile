@@ -16,6 +16,7 @@ end
 gem 'simple_form'
 gem 'devise'
 gem 'foundation-rails'
+gem 'rails_12factor', group: :production
 
 group :test, :development do
   gem 'rspec-rails'
