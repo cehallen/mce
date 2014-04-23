@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
     # Sentence object creation
     c = SubtitleParse.new
     context_blocks = c.array_sentences(script)
-    
+
     context_blocks.each do |block|
       Sentence.create(movie: @movie, 
         number: block['number'], 
@@ -38,25 +38,15 @@ class MoviesController < ApplicationController
         content: block['content'])
     end
 
-
-    # Word object creation
-    # [need to have an excluded words list]
-    # [need frequency += 1 or new word created.  find or create by?]
-    # example of creating join entry:
-    # User has_many :subscriptions
-    # User has_many :magazines, through: :subscriptions
-    # user.subscriptions.create(magazine: magazine)
-    # <word>.sjoinw.create(sentence: <sentence>)
-    # do something like above, and also find_or_create_by and += to frequency count
     sentences = @movie.sentences
     
     sentences.each do |sentence| 
       sentence.content.split.each do |word| 
         word = word.downcase.gsub(/\A\W+|\W+\z/, '')
         next if word.length < 2 
-        # skip_these_words = %w(the of to and in is it you that he was for on are) 
-        # next if skip_these_words.include?(word)
-        # # [actually, don't want to omit these bc there aren't many, and could be useful for beginner learners]
+        skip_these_words = %w(the of to and in is it you that was for on are) 
+        next if skip_these_words.include?(word)
+        
         word_entry = Word.where(content: word).first_or_initialize
         word_entry.frequency += 1
         word_entry.save 
