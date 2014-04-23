@@ -1,3 +1,14 @@
-.row .home {
-  padding: 35px;
+.home {
+  padding-top: 35px;
+  padding-left: 35px;
+}
+
+.home p {
+  margin: 0px;
+  padding: 0px; 
+}
+
+.ascii_img {
+  padding-top: 25px;
+  /*position: fixed;*/
 }
