@@ -2,7 +2,13 @@
   float: left;
 }
 
+.word_list li {
+  list-style-type: none;
+}
+
 .word_context {
+  padding-left: 30px;
+  border-left: 1px dotted #DE4260;
   float: left;
   max-height: 90%;
   position: fixed;
