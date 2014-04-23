@@ -18,5 +18,19 @@ class WordsController < ApplicationController
       @sentences = @word.sentences
     end  
 
+    sentences_context_blocks = []
+    @sentences.each do |sentence|
+      sentences_context_blocks << {
+        time_marker: sentence.time_marker,
+        previous: sentence.previous.first.content,
+        content: sentence.content,
+        following: sentence.following.first.content
+      }
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: {sentences: sentences_context_blocks, word: @word.content} }
+    end
   end
 end
