@@ -3,6 +3,9 @@
   -keep going on building the sentence content blocks in the js file.  
   -alter JSON builder
   -foundation to get a column on the right for the sentences
+  -can't get word into json builder
+
+  -Some words don't work, like 'me' in GWH short
   -Check out aggregate queries in SQL (for purpose of listing words by frequency in that movie, not using frequency)and get rid of frequency column
     • @sentences = @movie.sentences
         .joins(:sjoinws).where(sjoinws: { word: @word })
@@ -45,7 +48,7 @@ $(document).ready(function(){
 
 
  // missing title word and link to google search
-#minmally screwed up
+#minimally screwed up
 $(document).ready(function(){
   $('.word_link').on('click', function(e){
     e.preventDefault();

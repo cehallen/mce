@@ -3,9 +3,10 @@
 }
 
 .word_context {
-  /*position: sticky;*/
   float: left;
-  /*overflow: scroll;*/
+  max-height: 90%;
+  position: fixed;
+  overflow: scroll;
 }
 
 .context_block p {

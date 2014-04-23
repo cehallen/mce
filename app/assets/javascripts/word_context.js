@@ -8,6 +8,7 @@ $(document).ready(function(){
     var url = this['href'] + ".json";
     $.get(url, function(data){
       for(var i = 0; i < data.length; i++){
+        
         var $time = $('<p>').text("@" + data[i].time_marker);
         var $previous = $('<p>').text(data[i].previous);
         var $content = $('<p>').text(data[i].content).css('font-weight', 'bold');
