@@ -4,7 +4,6 @@ $(document).ready(function(){
   $('.word_link').on('click', function(e){
     e.preventDefault();
     $('.word_context').empty();
-    // var $word_li = this; // failed to get this variable passable in for loop below.  You want to have the sentences append to 'this'rather than a column on the right
     var url = this['href'] + ".json";
     $.get(url, function(data){
 
@@ -26,19 +25,14 @@ $(document).ready(function(){
         $('.word_context').append($context_block)
 
       }
-    })
-  })
-});
-// $('.word_context').append(data[i].content);
-// Create the HTML/DOM element for the new comment
-      //   var $commentAuthor = $('<h4>').text(response.author);
-      //   var $commentBody = $('<p>').text(response.body);
-      //   var $comment = $('<div>')
-      //     .addClass('comment')
-      //     .append($commentAuthor)
-      //     .append($commentBody);
 
-      //   // Add the new comment to the comment feed
-      //   var $commentFeed = $('.comment-feed');
-      //   $commentFeed.append($comment);
-      // },
+      // prepend the word and link to google
+      var $word_link_div = $('<div>').addClass('word_link_div');
+      $word_link_div.append($('<a>',{
+        text: data.word,
+        href: "http://www.google.com/search?q=" + data.word
+      }));
+      $('.word_context').prepend($word_link_div);
+    });
+  });
+});

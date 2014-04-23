@@ -1,7 +1,7 @@
 %Q{
-  -alter JSON builder
-  -can't get word into json builder
+  -Finish the app, eg tests, holes in database and wonky associations on deletion are BAD.
 
+  -Json buildier -> vanilla json worked to add 'word' link
   -Some words don't work, like 'me' in GWH short
   -Check out aggregate queries in SQL (for purpose of listing words by frequency in that movie, not using frequency)and get rid of frequency column
     • @sentences = @movie.sentences
