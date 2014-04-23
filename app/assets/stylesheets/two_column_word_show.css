@@ -37,3 +37,11 @@
 .word_link_div a:hover{
   color: #DE4260;
 }
+
+.ascii_right {
+  padding-top: 39px;
+  /*padding-right: 500px;*/
+  width: 630px;
+  height: auto;
+  overflow: hidden;
+}
