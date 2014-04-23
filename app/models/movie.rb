@@ -11,18 +11,3 @@ class Movie < ActiveRecord::Base
       end
   end
 end
-
-# untarnished
-# words.select("words.content, count(*)")
-#   .group("words.content")
-#   .order("count(*) desc").map do |word|
-#   [word.content, word.count]
-# end
-
-# def word_counts
-#   words.select("words.content, count(*)")
-#     .group("words.content")
-#     .order("count(*) desc").map do |word|
-#       [word.content, word.count, word]  #Didn't give full word object info..
-#     end
-# end
