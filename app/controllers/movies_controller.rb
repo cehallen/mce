@@ -29,7 +29,7 @@ class MoviesController < ApplicationController
 
     # Sentence object creation
     c = SubtitleParse.new
-    context_blocks = c.array_sentences(script)
+    context_blocks = c.array_sentences(script) # See subtitle_parse model
 
     context_blocks.each do |block|
       Sentence.create(movie: @movie, 
@@ -40,11 +40,14 @@ class MoviesController < ApplicationController
 
     sentences = @movie.sentences
     
+    # Word object creation
     sentences.each do |sentence| 
       sentence.content.split.each do |word| 
         word = word.downcase.gsub(/\A\W+|\W+\z/, '')
         next if word.length < 2 
-        skip_these_words = %w(the of to and in is it you that was for on are) 
+        skip_these_words = %w(
+          the of to and in is it you that was for on are
+          ) 
         next if skip_these_words.include?(word)
         
         word_entry = Word.where(content: word).first_or_initialize
