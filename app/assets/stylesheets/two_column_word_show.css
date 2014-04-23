@@ -27,3 +27,13 @@
 .show {
   padding-left: 35px;
 }
+
+.word_link_div {
+  padding-top: 14px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.word_link_div a:hover{
+  color: #DE4260;
+}

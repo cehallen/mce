@@ -1,4 +1,7 @@
 %Q{
+  Delete this file.
+
+  
   -Finish the app, eg tests, holes in database and wonky associations on deletion are BAD.
 
   -Json buildier -> vanilla json worked to add 'word' link
