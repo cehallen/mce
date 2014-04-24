@@ -3,7 +3,7 @@ Mce::Application.routes.draw do
 
   root 'movies#index'
   
-  resources :movies do
+  resources :movies, except: [:new] do
     resources :words, only: [:show]
   end  
   resources :sentences,  only: [:show]
