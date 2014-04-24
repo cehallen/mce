@@ -11,7 +11,8 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      redirect_to movies_path, notice: 'Successfully added movie.'
+      ParseWorker.perform_async(@movie.id)
+      redirect_to movies_path, notice: 'Successfully added movie.  It will be ready in one minute.'
     else
       notice[:alert] = 'Failed to add movie.'
       render :new
