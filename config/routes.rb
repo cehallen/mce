@@ -8,4 +8,6 @@ Mce::Application.routes.draw do
   end  
   resources :sentences,  only: [:show]
   resources :words, only: [:show]
+
+  get 'about', to: 'about'
 end

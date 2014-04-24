@@ -40,8 +40,35 @@
 
 .ascii_right {
   padding-top: 30px;
-  /*padding-right: 500px;*/
   width: 87%;
   height: auto;
   overflow: hidden;
 }
+
+.personal_info {
+  padding-top: 100px;
+}
+
+.personal_info h4 {
+  color: blue;
+}
+
+.personal_info h2 {
+  color: #7f7b78;
+  padding-top: 130px;
+  padding-bottom: 25px;
+}
+
+.personal_info p {
+  color: #008cba;
+  padding: 0px;
+}
+
+.personal_info a {
+  color: #DE4260;
+}
+
+
+
+
+
