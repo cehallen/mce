@@ -2,6 +2,7 @@ class Movie < ActiveRecord::Base
   has_many :sentences, dependent: :destroy
   has_many :sjoinws, through: :sentences
   has_many :words, through: :sjoinws
+  mount_uploader :subtitle_file_url, SubtitleFileUploader
 
   def word_counts
     words.select("words.content, count(*)")

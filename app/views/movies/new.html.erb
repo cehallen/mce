@@ -5,7 +5,8 @@
     <%= simple_form_for @movie do |f| %>
       <%= f.input :title %>
       
-      <%= f.file_field :script %>
+      <!-- changed from :script -->
+      <%= f.file_field :subtitle_file_url %>
 
       <%= f.button :submit, 'Add Movie' %>
     <% end %>
