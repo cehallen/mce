@@ -18,6 +18,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'carrierwave'
 gem 'fog'
+gem 'sidekiq'
 
 group :test, :development do
   gem 'rspec-rails'
