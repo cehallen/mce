@@ -12,9 +12,9 @@ class MoviesController < ApplicationController
 
     if @movie.save
       ParseWorker.perform_async(@movie.id)
-      redirect_to movies_path, notice: 'Successfully added movie.  Ready in a moment!'
+      redirect_to movies_path, notice: 'Successfully added movie.'
     else
-      notice[:alert] = 'Failed to add movie.'
+      flash.now[:alert] = 'Failed to add movie.'
       render :new
     end
   end

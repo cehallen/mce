@@ -29,14 +29,12 @@ feature 'adding a movie', %Q{
     click_on 'Add Subtitles'
 
     fill_in 'Title', with: 'Good Will Hunting'
-    attach_file('movie[script]', 
+    attach_file('movie[subtitle_file_url]', 
       File.expand_path('spec/support/goodWillHuntingSHORT.srt'))
     click_on 'Add Movie'
 
-    expect(page).to have_content('Your movie is ready!')
+    expect(page).to have_content('Successfully added movie.')
     expect(Movie.count).to eq(prev_count + 1)
-    #expect containers for hi/med/lo to not be empty
-    binding.pry
   end
 
   scenario 'with invalid attributes' do
@@ -45,8 +43,11 @@ feature 'adding a movie', %Q{
     click_on 'Add Subtitles'
 
     click_on 'Add Movie'
+    expect(page).to have_content('Failed to add movie.')
+    expect(page).to_not have_content('Successfully added movie.')
+  end
 
-    expect(page).to have_content('Please input both items')
-    expect(page).to_not have_content('Your movie is ready!')
+  scenario 'poorly formatted srt file' do
+    
   end
 end

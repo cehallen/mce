@@ -26,6 +26,7 @@ group :test, :development do
   gem 'factory_girl'
   gem 'valid_attribute'
   gem 'shoulda'
+  # gem 'shoulda-matchers'
   gem 'launchy'
   gem 'capybara'
   gem 'dotenv-rails'

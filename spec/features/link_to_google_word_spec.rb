@@ -16,9 +16,13 @@ feature 'linking to a Google search of that word', %Q{
     visit movies_path
     create_movie
     click_on 'Good Will Hunting'
-    click_on 'astrophysicists'
-    within(:css, 'h3') do
-      expect(page).to have_css('a[href="http://www.google.com/search?q=astrophysicists"]')
+    visit current_path
+    # Capybara.default_wait_time = 10
+    # save_and_open_page
+    # click_on 'up'
+    using_wait_time 3 do
+      click_on 'up'
+      expect(page).to have_css('a[href="http://www.google.com/search?q=up"]')
     end
   end
 end
