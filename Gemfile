@@ -19,7 +19,6 @@ gem 'foundation-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'sidekiq'
-gem 'puma'
 
 group :test, :development do
   gem 'rspec-rails'
