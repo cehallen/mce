@@ -11,20 +11,32 @@ feature 'viewing words for an already submitted movie', %Q{
 # * On the movies index page I can click on a movie's title 
 #   and be shown a list of words from the movie and frequency
 
+# # Use of synchronize.  official way jniklas way.
+# page.document.synchronize do
+#   element = first('#whatever')
+#   if element
+#     element.click
+#     find('#foo').text
+#   else
+#     nil
+#   end
+# end
 
   scenario 'as authenticated user' do
     sign_in_as(FactoryGirl.create(:user))
     visit movies_path
-    create_movie
+    create_movie  # CreateMovieHelper
     click_on 'Good Will Hunting'
-    visit movies_path
+    # save_and_open_page
+    # visit movies_path
+    # wait_for_words  # CapybaraHelpers
 
-    using_wait_time 9 do
-      expect(page).to have_content('you - 21')
-      expect(page).to have_content('the - 9')
-    end
-    # expect(page).to have_content('you - 21')
-    # expect(page).to have_content('the - 9')
+    # using_wait_time 9 do
+    #   expect(page).to have_content('you - 21')
+    #   expect(page).to have_content('the - 9')
+    # end
+    expect(page).to have_content('you - 21')
+    expect(page).to have_content('the - 9')
   end
 
   scenario 'as unauthenticated user' do
@@ -35,11 +47,11 @@ feature 'viewing words for an already submitted movie', %Q{
     visit movies_path
     click_on 'Good Will Hunting'
 
-    using_wait_time 9 do
-      expect(page).to have_content('you - 21')
-      expect(page).to have_content('the - 9')
-    end
-    # expect(page).to have_content('you - 21')
-    # expect(page).to have_content('the - 9')
+    # using_wait_time 9 do
+    #   expect(page).to have_content('you - 21')
+    #   expect(page).to have_content('the - 9')
+    # end
+    expect(page).to have_content('you - 21')
+    expect(page).to have_content('the - 9')
   end
 end

@@ -42,4 +42,5 @@ RSpec.configure do |config|
   config.order = "random"
   config.include AuthenticationHelpers, type: :feature
   config.include CreateMovieHelpers, type: :feature
+  config.include CapybaraHelpers, type: :request
 end
