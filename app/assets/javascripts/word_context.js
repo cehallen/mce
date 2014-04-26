@@ -1,13 +1,9 @@
-// missing title word and link to google search
-
 $(document).ready(function(){
   $('.word_link').on('click', function(e){
     e.preventDefault();
     $('.word_context').empty();
     var url = this['href'] + ".json";
     $.get(url, function(data){
-
-      // debugger;
 
       for(var i = 0; i < data.sentences.length; i++){
         

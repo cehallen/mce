@@ -30,7 +30,9 @@ class WordsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: {sentences: sentences_context_blocks, word: @word.content} }
+      format.json { 
+        render json: {sentences: sentences_context_blocks, word: @word.content} 
+      }
     end
   end
 end
