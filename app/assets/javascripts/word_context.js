@@ -7,7 +7,7 @@ $(document).ready(function(){
 
       for(var i = 0; i < data.sentences.length; i++){
         
-        var $time = $('<p>').text("@" + data.sentences[i].time_marker);
+        var $time = $('<p>').text("@" + data.sentences[i].time_marker).css('font-style', 'italic').css('font-size', '0.8em');
         var $previous = $('<p>').text(data.sentences[i].previous);
         var $content = $('<p>').text(data.sentences[i].content).css('font-weight', 'bold');
         var $following = $('<p>').text(data.sentences[i].following);
@@ -23,7 +23,7 @@ $(document).ready(function(){
       }
 
       // prepend the word and link to google
-      var $word_link_div = $('<div>').addClass('word_link_div');
+      var $word_link_div = $('<div>').addClass('word_link_div').css('font-size', '2em');
       $word_link_div.append($('<a>',{
         text: data.word,
         href: "http://www.google.com/search?q=" + data.word
