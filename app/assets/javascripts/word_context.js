@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $('.word_link').on('click', function(e){
-    // e.preventDefault();
+    e.preventDefault();
     $('.word_context').empty();
     var url = this['href'] + ".json";
     $.get(url, function(data){
