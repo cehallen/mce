@@ -5,29 +5,11 @@
 
 <h5>.. and the context <em><%= @word.content %></em> appears in:</h5>
 
-<!-- ready to remove that AR, using .previous and .following methods -->
-
 <% @sentences.each do |sentence| %>
-  <% number = sentence.number %>
 
-  <% if number == 1 %>
-    <% previous_sentence = nil %>
-  <% else %>
-    <% previous_sentence = 
-      Sentence.where("number = #{number - 1} 
-      AND movie_id = #{sentence.movie_id}").take.content %>
-  <% end %>
-
-  <% if number == @max_number_sentence %>
-    <% following_sentence = nil %>
-  <% else %>
-    <% following_sentence = 
-      Sentence.where("number = #{number + 1} 
-      AND movie_id = #{sentence.movie_id}").take.content %>
-  <% end %>
 
   <%= "@#{sentence.time_marker}" %><br>
-  <%= previous_sentence %><br>
+  <%= sentence.previous.first.content %><br>
   <strong><%= sentence.content %></strong><br>
-  <%= following_sentence %><br><br>
+  <%= sentence.following.first.content %><br><br>
 <% end %>
