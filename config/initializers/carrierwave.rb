@@ -7,7 +7,8 @@ CarrierWave.configure do |config|
     # :host                   => 's3.example.com',         # optional, defaults to nil
     # :endpoint               => 'https://s3.example.com:8080' # optional, defaults to nil
   }
-  config.fog_directory = "oscar-subtitle-files"
+  # config.fog_directory = "oscar-subtitle-files"  # can delete this
+  config.fog_directory = "oscar-subtitle-files-#{Rails.env}" 
   # config.fog_public     = false                                   # optional, defaults to true
   # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}  
 end

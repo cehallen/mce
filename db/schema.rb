@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20140427191209) do
     t.string   "content",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "frequency",  default: 0
+    t.integer  "frequency",  default: 1
   end
 
 end
