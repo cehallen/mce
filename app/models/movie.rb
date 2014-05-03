@@ -8,7 +8,7 @@ class Movie < ActiveRecord::Base
   mount_uploader :subtitle_file_url, SubtitleFileUploader
 
   def word_counts
-    words.select("words.content, count(*)")
+    words.select("words.content, count(*)")  # Like this: @movie.words...
       .group("words.content")
       .order("count(*) desc").map do |word|
         [word.content, word.count, Word.where("content = ?", word.content)]
