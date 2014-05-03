@@ -2,7 +2,8 @@
   <div class="small-10 large-5 columns home">
     <h5>Vocabulary Sets </h5><br>
     <% @movies.each do |movie| %>
-      <p><%= link_to movie.title, movie_path(movie) %></p>
+      <p><%= link_to movie.title, movie_path(movie) %> | 
+        <%= link_to "Delete", movie_path(movie), method: :delete %></p>
     <% end %>
   </div>
 
