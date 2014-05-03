@@ -24,6 +24,20 @@ class MoviesController < ApplicationController
     @words = @movie.words
   end
 
+############
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    @movie.destroy
+    respond_to do |format|
+      format.html { redirect_to movies_url, 
+        notice: 'Deleted successfully' }
+      format.json { head :no_content }
+    end
+  end
+
+############
+
   private 
 
   def movie_params
