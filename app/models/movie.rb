@@ -1,6 +1,6 @@
 class Movie < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
-  validates :subtitle_file_url, presence: true # Make this in schema too
+  validates :subtitle_file_url, presence: true
   
   has_many :sentences, dependent: :destroy
   has_many :sjoinws, through: :sentences
