@@ -1,7 +1,9 @@
 <div class="row">
   <div class="small-10 large-5 columns home">
-    <h5>Vocabulary Sets </h5><br>
     <table>
+      <tr>
+        <th>Vocabulary Sets </th>
+      </tr>
       <% @movies.each do |movie| %>
         <tr>
           <td><%= link_to movie.title, movie_path(movie) %></td> 
