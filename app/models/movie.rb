@@ -1,7 +1,9 @@
 class Movie < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   validates :subtitle_file_url, presence: true
+  validates :user, presence: true
   
+  belongs_to :user
   has_many :sentences, dependent: :destroy
   has_many :sjoinws, through: :sentences
   has_many :words, through: :sjoinws

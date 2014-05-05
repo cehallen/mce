@@ -1,10 +1,18 @@
 <div class="row">
   <div class="small-10 large-5 columns home">
     <h5>Vocabulary Sets </h5><br>
-    <% @movies.each do |movie| %>
-      <p><%= link_to movie.title, movie_path(movie) %> | 
-        <%= link_to "Delete", movie_path(movie), method: :delete %></p>
-    <% end %>
+    <table>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= link_to movie.title, movie_path(movie) %></td> 
+          <% if user_signed_in? %>
+            <% if current_user.id == movie.user_id %>
+              <td><%= link_to "Delete", movie_path(movie), method: :delete %></td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
   </div>
 
   <div class="small-0 large-7 columns ascii_img">

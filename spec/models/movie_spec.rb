@@ -12,5 +12,6 @@ describe Movie do
     it { should have_many(:sentences).dependent(:destroy) }
     it { should have_many(:sjoinws).through(:sentences) }
     it { should have_many(:words).through(:sjoinws) }
+    it { should belong_to(:user) }
   end
 end
