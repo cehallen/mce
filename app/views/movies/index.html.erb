@@ -1,23 +1,22 @@
 <div class="row">
   <div class="small-10 large-5 columns home">
-    <table>
-      <tr>
-        <th>Vocabulary Sets </th>
-      </tr>
+    
+        <h5>Vocabulary Sets </h5>
+      
       <% @movies.each do |movie| %>
-        <tr>
-          <td><%= link_to movie.title, movie_path(movie) %></td> 
+        
+          <li><%= link_to movie.title, movie_path(movie) %></li>
           <% if user_signed_in? %>
             <% if current_user.id == movie.user_id %>
-              <td><%= link_to "Delete", movie_path(movie), method: :delete %></td>
+              <%= link_to "Delete", movie_path(movie), method: :delete %>
             <% end %>
           <% end %>
-        </tr>
+        
       <% end %>
-    </table>
+    
   </div>
 
-  <div class="small-0 large-7 columns ascii_img">
+  <div class="small-2 large-7 columns ascii_img">
       <%= render 'ascii_indy' %>
   </div>
 </div>

@@ -30,9 +30,6 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie = Movie.find(params[:id])
-    # if @movie.uploader != current_user  #don't have an uploader column in movies table yet.
-    #   redirect_to @movie, notice: "Sorry you can't edit other people's vocab lists"
-    # end
     @movie.destroy
     respond_to do |format|
       format.html { redirect_to movies_url, 

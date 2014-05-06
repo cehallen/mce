@@ -5,11 +5,11 @@ class SubtitleParse
     context_blocks = []
     script.each do |entry|
       block       = {}
+
       line        = entry.strip.split("\n")
       number      = line[0]
       time_marker = line[1][0..7]
       content     = line[2..-1].join("\n")
-
       
       block['number']      = number
       block['time_marker'] = time_marker
