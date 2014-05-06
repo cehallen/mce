@@ -16,3 +16,7 @@ html, body {
   padding-top: 25px;
   /*position: fixed;*/
 }
+
+.delete-movie {
+  color: #DEDEDB;
+}

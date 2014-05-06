@@ -5,13 +5,16 @@
       
       <% @movies.each do |movie| %>
         
-          <li><%= link_to movie.title, movie_path(movie) %></li>
-          <% if user_signed_in? %>
-            <% if current_user.id == movie.user_id %>
-              <%= link_to "Delete", movie_path(movie), method: :delete %>
+          <p>
+            <%= link_to movie.title, movie_path(movie) %>
+            <% if user_signed_in? %>
+              <% if current_user.id == movie.user_id %>
+                <%= link_to " | Delete", movie_path(movie), 
+                  method: :delete, 
+                  class: 'delete-movie' %>
+              <% end %>
             <% end %>
-          <% end %>
-        
+          </p>
       <% end %>
     
   </div>
