@@ -10,7 +10,8 @@
         <% frequency = word_info[1] %>
         <% word_object = word_info[2] %>
 
-        <li><%= link_to word, movie_word_path(@movie, word_object.first), class: 'word_link' %> - 
+        <li><%= link_to word, movie_word_path(@movie, word_object.first), 
+          class: 'word_link' %> - 
           <%= frequency %></li>
       <% end %>
     </div>
