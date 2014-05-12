@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
     @movie.user = current_user
 
     if @movie.save
-      ParseWorker.perform_async(@movie.id)
+      ParseWorker.perform_async(@movie.id)  # Need to add error handling here
       redirect_to movies_path, notice: 'Successfully added movie.'
     else
       flash.now[:alert] = 'Failed to add movie.'
