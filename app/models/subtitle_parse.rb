@@ -9,8 +9,7 @@ class SubtitleParse
       number      = line[0]
       time_marker = line[1][0..7]
       content     = line[2..-1].join("\n")
-
-      
+     
       block['number']      = number
       block['time_marker'] = time_marker
       block['content']     = content
