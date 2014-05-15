@@ -1,6 +1,7 @@
 class SubtitleParse
 
   def array_sentences(script)
+    begin
       script         = script.strip.split(/^\s*$/) 
       context_blocks = []
       script.each do |entry|

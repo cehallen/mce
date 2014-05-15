@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
     @movie.user = current_user
 
     if @movie.save    
-      if ParseWorker.perform_async(@movie.id)  # Need to add error handling here
+      if ParseWorker.perform_async(@movie.id) != nil # Need to add error handling here
         redirect_to movies_path, notice: 'Successfully added movie.'
       else
         flash.now[:alert] = 'Failed to add movie.  Please make sure the subtitle file given matches our requirements'
