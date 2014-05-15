@@ -11,9 +11,12 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     @movie.user = current_user
 
-    if @movie.save
-      ParseWorker.perform_async(@movie.id)  # Need to add error handling here
-      redirect_to movies_path, notice: 'Successfully added movie.'
+    if @movie.save    
+      if ParseWorker.perform_async(@movie.id)  # Need to add error handling here
+        redirect_to movies_path, notice: 'Successfully added movie.'
+      else
+        flash.now[:alert] = 'Failed to add movie.  Please make sure the subtitle file given matches our requirements'
+      end
     else
       flash.now[:alert] = 'Failed to add movie.'
       render :new
@@ -25,9 +28,6 @@ class MoviesController < ApplicationController
     @words = @movie.words
   end
 
-############
-# WIP
-
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
@@ -38,7 +38,6 @@ class MoviesController < ApplicationController
     end
   end
 
-############
 
   private 
 
