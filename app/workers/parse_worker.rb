@@ -8,12 +8,6 @@ class ParseWorker
     c = SubtitleParse.new
     context_blocks = c.array_sentences(script) # See subtitle_parse model
 
-
-    # if context_blocks == nil  # Exception handling first draft, return nil
-    #   return nil
-    # end
-    
-
     context_blocks.each do |block|
       Sentence.create(movie: movie, 
         number: block['number'], 
