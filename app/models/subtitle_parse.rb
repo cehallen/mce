@@ -28,8 +28,6 @@ class SubtitleParse
   private
 
   def check_number(line)
-    # /\A\d\z/ =~ line ? true : false
-#working here
     if /\A\d\z/ =~ line
       line
     else
@@ -38,7 +36,6 @@ class SubtitleParse
   end
 
   def check_time_marker(line)
-    # /-->/ =~ line ? true : false
     if /-->/ =~ line
       line
     else
@@ -47,7 +44,6 @@ class SubtitleParse
   end
 
   def check_content(line)
-    # /\S/ =~ line ? true : false  # Make sure something is there at least
     if /\S/ =~ line
       line
     else
