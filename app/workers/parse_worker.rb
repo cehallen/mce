@@ -1,6 +1,5 @@
 class ParseWorker
   include Sidekiq::Worker
-  # sidekiq_options :retry => 5
   
   def perform(movie_id)
     movie = Movie.find(movie_id)
@@ -19,10 +18,6 @@ class ParseWorker
     sentences = movie.sentences
     
     # Word object creation
-    # word_object_creation(sentences)
-  end
-
-  def word_object_creation(sentences)
     sentences.each do |sentence| 
       sentence.content.split.each do |word| 
         word = word.downcase.gsub(/\A\W+|\W+\z/, '')  # Remove punctuation on word ends
