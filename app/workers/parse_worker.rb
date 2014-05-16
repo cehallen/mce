@@ -1,5 +1,6 @@
 class ParseWorker
   include Sidekiq::Worker
+  sidekiq_options :retry => 5
   
   def perform(movie_id)
     movie = Movie.find(movie_id)
