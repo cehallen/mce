@@ -21,9 +21,10 @@ class ParseWorker
     sentences.each do |sentence| 
       sentence.content.split.each do |word| 
         word = word.downcase.gsub(/\A\W+|\W+\z/, '')  # Remove punctuation on word ends
-        next if word.length < 2 
-        skip_these_words = %w(
-          the of to and in is it you that was for on are
+        next if word.length < 2
+        # These words will not be processed 
+        skip_these_words = %w(   
+          the of to and in is it you that was for on are it's an as this an 
           ) 
         next if skip_these_words.include?(word)
         
